@@ -10,15 +10,17 @@
 
     <div id="po" class="thumbnail">
 
-    <a href="{% url 'persons:detail_home' home_id=image_of_home.homeid %}"><img class="img-rounded" alt="Cinque Terre" id="img"src="{{image_of_home.image}}" /></a>
-      
+    <a href="{% url 'persons:detail_home' home_id=image_of_home.homeid %}">
+      <img class="img-rounded" alt="Cinque Terre" id="img"src="{{image_of_home.image.url}}" />
+    </a>
+
 </div>
 	{% endfor%}
 {% endfor %}
 
 
 
- 
+
 
 
 {% else %}
@@ -40,8 +42,8 @@
         <!-- alert(data); -->
         <!-- alert("shahab"); -->
     },
-    failure: function(data) { 
+    failure: function(data) {
         alert('Got an error dude');
     }
-}); 
+});
     {% endblock %}

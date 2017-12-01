@@ -1,10 +1,9 @@
-from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from ckeditor_uploader.fields import RichTextUploadingField
-import secretballot
+# from ckeditor_uploader.fields import RichTextUploadingField
+# import secretballot
 # Create your models here.
 class Member(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -41,12 +40,13 @@ class Home(models.Model):
     def updown(self):
         return reverse("persons:updown", kwargs={"id": self.id})
 
-secretballot.enable_voting_on(Home)
+# secretballot.enable_voting_on(Home)
 
 
 class Picture(models.Model):
     homeid = models.ForeignKey(Home)
-    image = models.URLField(blank=True,null=True)
+    # image = models.URLField(blank=True,null=True)
+    image = models.ImageField(blank=True,null=True)
     timestamp = models.DateTimeField(auto_now_add=True,auto_now=False)
     updated = models.DateTimeField(auto_now_add=False,auto_now=True)
     def __str__(self):
@@ -71,7 +71,8 @@ class City(models.Model):
 class Comment(models.Model):
     home = models.ForeignKey(Home)
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = RichTextUploadingField()
+    # text = RichTextUploadingField()
+    text = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True,auto_now=False)
     updated = models.DateTimeField(auto_now_add=False,auto_now=True)
     def __str__(self):
@@ -84,7 +85,3 @@ class TrueFalseQuestion(models.Model):
     home = models.ForeignKey(Home,on_delete=models.CASCADE,default="1")
     def __str__(self):
         return (str(self.question))
-
-
-
-    

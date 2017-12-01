@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load likes_inclusion_tags %}
 {% block head_title %}home_title{% endblock %}
 {% block content %}
 
@@ -10,7 +9,6 @@
 
 
 
-{% likes home %}
 
 <a href="{{home.add_a_ana}}">add_a_ana</a>
 <br>
@@ -56,7 +54,7 @@
 <hr>
 </div>
 {% for p in pictures %}
-    <img id="img" src="{{p.image}}" />
+    <img id="img" src="{{p.image.url}}" />
     {% if user.username ==  owner.username %}
 
     <a href="/persons/image/{{p.id}}/delete/">delete this picture</a>
@@ -71,15 +69,15 @@
         you like this home
     {% else %}
             <button id="btnLike" class="btn btn-info btn-lg">
-            <i class="fa fa-thumbs-up" aria-hidden="true"></i>like     
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>like
             </button>
             <div id="message"></div>
-    
-    {% endif %}        
+
+    {% endif %}
 
 {% endif %}
     </div>
-</div>        
+</div>
 
     {% if user.username ==  owner.username %}
 <form  method="post"enctype="multipart/form-data">
@@ -98,7 +96,7 @@
 <div id="po" class="thumbnail">
 <div style="text-align:center">
 {% for com in comments %}
-   <h4><a href="/persons/users/{{com.writer.id}}/">{{com.writer}}</a></h4> 
+   <h4><a href="/persons/users/{{com.writer.id}}/">{{com.writer}}</a></h4>
 
 
 {% autoescape off %}
@@ -140,11 +138,11 @@ var a = "{{home.id}}";
                    var message = data["message"];
                    message =
                 $("#message").html(message)
-         
-                 
+
+
                  } }     )
 
 
             });
-   
+
 {% endblock jquery %}

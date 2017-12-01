@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-import dj_database_url
+# import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'persons',
     'accounts',
     'ckeditor',
-    'secretballot',
-	'likes',
+    # 'secretballot',
+	# 'likes',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -57,8 +57,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'secretballot.middleware.SecretBallotIpUseragentMiddleware',
-    "likes.middleware.SecretBallotUserIpUseragentMiddleware",
+    # 'secretballot.middleware.SecretBallotIpUseragentMiddleware',
+    # "likes.middleware.SecretBallotUserIpUseragentMiddleware",
 ]
 
 ROOT_URLCONF = 'sh_p1.urls'
@@ -124,14 +124,14 @@ USE_L10N = True
 USE_TZ = True
 
 # Update database configuration with $DATABASE_URL.
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-# Allow all host headers
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#
+# # Allow all host headers
 ALLOWED_HOSTS = ['*']
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'suggestions')
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'suggestions')
 
 
 # Static files (CSS, JavaScript, Images)
@@ -150,17 +150,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'statics')
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 LOGIN_URL = 'login'
 LOGUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/persons/yourHomes'
 
-CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 CKEDITOR_UPLOAD_SLUGIFY_FILENAME=True
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'

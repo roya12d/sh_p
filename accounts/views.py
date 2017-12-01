@@ -61,7 +61,7 @@ def information(request):
         instance2 = Member.objects.get(user=current_user)
     except:
         instance2 = Member.objects.create(user=current_user)
-            
+
 
     form1 = UserForm(request.POST or None,instance = instance1)
     form2 = MemberForm(request.POST or None,instance = instance2)
@@ -81,7 +81,7 @@ def information(request):
             "form2":form2,
                     }
 
-    return render(request,template_name,context)   
+    return render(request,template_name,context)
 
 def login_view(request):
     form = LoginForm(request.POST or None)
@@ -104,4 +104,3 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect("/")
-   
